@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import os
 import math
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir
@@ -9,7 +8,7 @@ display.EraseAll()
 #
 # Make the 1st cylinder
 #
-cyl1 = BRepPrimAPI_MakeCylinder(50,200)
+cyl1 = BRepPrimAPI_MakeCylinder(50, 200)
 cyl1_shape = cyl1.Shape()
 #
 # Make the 2nd cylinder

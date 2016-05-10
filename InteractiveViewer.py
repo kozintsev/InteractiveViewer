@@ -4,8 +4,6 @@
 import sys
 import os
 import os.path
-import browser
-import urllib
 
 try:
     THISPATH = os.path.dirname(os.path.abspath(__file__))
@@ -101,14 +99,14 @@ def YesNo(parent, question, caption='Yes or no?'):
     
 class AppFrame(wx.Frame):
     def __init__(self, parent):
-        wx.Frame.__init__(self, parent, -1, "pythonOCC Interactive Console %s"%VERSION, style=wx.DEFAULT_FRAME_STYLE,size = (1024,768))
+        wx.Frame.__init__(self, parent, -1, "pythonOCC Interactive Console %s"%VERSION, style=wx.DEFAULT_FRAME_STYLE, size = (1024, 768))
         
         self._mgr = wx.aui.AuiManager()
         self._mgr.SetManagedWindow(self) 
 
         self._recentfiles = GetRecentFiles(os.path.join(THISPATH, "recentfiles"))
         self.canva = GraphicsCanva3D(self)
-        self._mgr.AddPane(self.canva, wx.aui.AuiPaneInfo().Name("Canvas").Caption("Canvas").MaximizeButton().BestSize(wx.Size(300,100)).MinSize(wx.Size(300,100)).CenterPane())
+        self._mgr.AddPane(self.canva, wx.aui.AuiPaneInfo().Name("Canvas").Caption("Canvas").MaximizeButton().BestSize(wx.Size(300, 100)).MinSize(wx.Size(300, m100)).CenterPane())
         
         nb = wx.aui.AuiNotebook(self, -1)
         self.notebook = nb
@@ -122,7 +120,7 @@ class AppFrame(wx.Frame):
         self._mgr.AddPane(self.tb, wx.aui.AuiPaneInfo().Name("View").Caption("View").ToolbarPane().Top().TopDockable(True).BottomDockable(True))
 
         self._mgr.Update()
-        self._mgr.GetPane("Help").MinSize((-1,-1)) # now make it so that the help pane can be resized
+        self._mgr.GetPane("Help").MinSize((-1, -1))  # now make it so that the help pane can be resized
 
         self.DefaultPerspective = self._mgr.SavePerspective()
         # Load Layout
