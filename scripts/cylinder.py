@@ -3,7 +3,10 @@ import math
 from OCC.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.gp import gp_Ax2, gp_Pnt, gp_Dir
 
-display.EraseAll()
+try:
+    display.EraseAll()
+except Exception:
+    print "Not interactive Viewer mode"
 
 #
 # Make the 1st cylinder
@@ -16,9 +19,15 @@ cyl1_shape = cyl1.Shape()
 cyl2 = BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(200, 200, 0), gp_Dir(0, 0, 1)), 40, 110, 210*math.pi/180)
 cyl2_shape = cyl2.Shape()
 
-display.DisplayShape(cyl2_shape)
+try:
+    display.DisplayShape(cyl2_shape)
+    display.View_Iso()
+except Exception:
+    print "Not interactive Viewer mode"
+    from OCC.Display.SimpleGui import init_display
+    display.DisplayShape(cyl2_shape, update=True)
+    start_display()
 
-display.View_Iso()
 #
 # Export result to IGES file
 #

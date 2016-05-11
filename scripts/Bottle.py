@@ -14,7 +14,11 @@ import os.path
 import math
 # --------------------------------------------------
 
-display.EraseAll()
+try:
+    display.EraseAll()
+except Exception:
+    print "Not interactive Viewer mode"
+
 
 # --------------------------------------------------
 
